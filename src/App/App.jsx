@@ -84,8 +84,8 @@ function App (){
         {/* Contenido principal con overflow auto para permitir scroll cuando sea necesario */}
         <div style={{ flex: 1, padding: '5px', gap: '1px', overflowY: 'auto' }}>
           <Routes>
-            <Route path="/" element={<LandigPage/>} />
-            <Route path="/CargaImagen" element={<SeleccionarImg realizarrecarga={realizarrecarga} seleccionitem={seleccionitem} clickmenu={clickmenu} 
+  
+            <Route path="/" element={<SeleccionarImg realizarrecarga={realizarrecarga} seleccionitem={seleccionitem} clickmenu={clickmenu} 
                                                       datomenuseleccionado={datomenuseleccionado} 
                                                       openmodaleliminar={openmodaleliminar}
                                                       setOpenmodaleliminar={setOpenmodaleliminar}
