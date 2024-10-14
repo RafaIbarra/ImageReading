@@ -1,0 +1,66 @@
+.image-selector-wrapper {
+    display: flex;
+    flex-direction: column; /* Organiza en columna (filas) */
+    align-items:flex-start; /* Centra horizontalmente */
+    /* margin-right: 75%; */
+  }
+  
+  .image-selector-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 0px; /* Espacio entre las imágenes */
+    width: 100%;
+    align-items: flex-start;
+  }
+  
+  button {
+    margin-top: 20px; /* Espacio entre las imágenes y el botón */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 30px;
+    cursor: pointer;
+    width: 200px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .divider {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #ccc; /* Puedes cambiar el color y el grosor de la línea */
+    margin: 15px 0; /* Espacio alrededor de la línea */
+  }
+
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 5fr; /* Dos columnas de igual tamaño */
+    gap: 20px; /* Espacio entre las columnas */
+  }
+  
+  .image-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea el contenido de cada columna en el centro */
+  }
+  
+  .image-grid img {
+    max-width: 100%; /* Asegura que las imágenes no sobrepasen el tamaño del contenedor */
+  }
+
+
+  .Titulo-frontal {
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: -2px;
+  }
+
+  .Titulo-reverso {
+    text-align: center; /* Centra el texto horizontalmente */
+  }

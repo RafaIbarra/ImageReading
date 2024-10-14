@@ -1,0 +1,5 @@
+.ant-input[readonly] {
+    background-color: #f5f5f5; /* Color de fondo similar a un input deshabilitado */
+    color: black; /* Color del texto en negro */
+    
+}
