@@ -11,9 +11,10 @@ import { WarningOutlined } from '@ant-design/icons';
 import ModalEliminacion from './ModalEliminacion/ModalEliminacion';
 import BotonStyle from './BotonStyle';
 import ImagenUpload from './ImagenUpload';
+import environment from '../environment.js'
 
 
-
+const apiUrl = environment.apiUrl;
 const { Title } = Typography;
 
 
@@ -69,7 +70,7 @@ function SeleccionarImg  ({realizarrecarga
   
       try {
         // const response = await fetch('http://127.0.0.1:8000/api/lectura-imagen/', {
-        const response = await fetch('https://docs.rafaelibarra.xyz/api/lectura-imagen/', {
+        const response = await fetch(`${apiUrl}lectura-imagen/`, {
           method: 'POST',
           body: formData,
         });
