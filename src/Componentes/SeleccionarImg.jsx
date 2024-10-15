@@ -10,9 +10,11 @@ import AguardandoRespuesta from './AguardandoRespuesta/AguardandoRespuesta';
 import { WarningOutlined } from '@ant-design/icons';
 import ModalEliminacion from './ModalEliminacion/ModalEliminacion';
 import BotonStyle from './BotonStyle';
+import ImagenUpload from './ImagenUpload';
+import environment from '../environment.js'
 
 
-
+const apiUrl = environment.apiUrl;
 const { Title } = Typography;
 
 
@@ -68,7 +70,7 @@ function SeleccionarImg  ({realizarrecarga
   
       try {
         // const response = await fetch('http://127.0.0.1:8000/api/lectura-imagen/', {
-        const response = await fetch('https://docs.rafaelibarra.xyz/api/lectura-imagen/', {
+        const response = await fetch(`${apiUrl}lectura-imagen/`, {
           method: 'POST',
           body: formData,
         });
@@ -237,11 +239,18 @@ useEffect(() => {
         <div className="section">
           <div className="image-grid">
             <div>
-              <ImagenFrontal agrega_img_frontal={agrega_img_frontal} 
-                              seleccionitem={seleccionitem} 
+              {/* <ImagenFrontal agrega_img_frontal={agrega_img_frontal} 
+                              seleccionItem={seleccionitem} 
                               clickmenu={clickmenu} 
                               datomenuseleccionado={datomenuseleccionado} 
                               limpiar_resultado_frontal={limpiar_resultado_frontal}
+              /> */}
+              <ImagenUpload   agregarImagen={agrega_img_frontal}
+                              seleccionItem={seleccionitem}
+                              clickMenu={clickmenu}
+                              datoMenuSeleccionado={datomenuseleccionado}
+                              limpiarResultado={limpiar_resultado_frontal}
+                              tipoImagen="frontal"
               />
 
             </div>
@@ -266,11 +275,18 @@ useEffect(() => {
         <div className="section">
           <div className="image-grid">
             <div className="seccion-imagen">
-              <ImagenReverso agrega_img_reverso={agrega_img_reverso} 
+              {/* <ImagenReverso agrega_img_reverso={agrega_img_reverso} 
                               seleccionitem={seleccionitem} 
                               clickmenu={clickmenu} 
                               datomenuseleccionado={datomenuseleccionado}
                               limpiar_resultado_reverso={limpiar_resultado_reverso}
+              /> */}
+              <ImagenUpload   agregarImagen={agrega_img_reverso}
+                              seleccionItem={seleccionitem}
+                              clickMenu={clickmenu}
+                              datoMenuSeleccionado={datomenuseleccionado}
+                              limpiarResultado={limpiar_resultado_reverso}
+                              tipoImagen="reverso"
               />
             </div>
             <div className="resultado">
