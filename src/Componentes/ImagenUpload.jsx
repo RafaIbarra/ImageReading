@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Typography, notification } from "antd";
-import { WarningOutlined } from "@ant-design/icons";
 import "./costum.css";
+import { showErrorMessage } from "../utils/alert";
 
 const { Title } = Typography;
 
@@ -19,21 +19,12 @@ function ImagenUpload({
   const [api, contextHolder] = notification.useNotification();
   const [isDragging, setIsDragging] = useState(false);
 
-  const mostrarmensajeerror = (placement, mensaje) => {
-    api.open({
-      message: "ERROR",
-      description: ` ${mensaje}`,
-      placement,
-      icon: <WarningOutlined style={{ color: "red" }} />,
-    });
-  };
-
   const handleImageChange = (event) => {
     const file = event.target.files[0];
 
     if (file) {
       if (!file.type.startsWith("image/")) {
-        mostrarmensajeerror("top", "Solo se permiten archivos de imagen");
+        showErrorMessage("Solo se permiten archivos de tipo imagen");
         event.target.value = null;
         return;
       }
@@ -83,7 +74,7 @@ function ImagenUpload({
     const file = event.dataTransfer.files[0];
     if (file) {
       if (!file.type.startsWith("image/")) {
-        mostrarmensajeerror("top", "Solo se permiten archivos de imagen");
+        showErrorMessage("Solo se permiten archivos de tipo imagen");
         return;
       }
 
