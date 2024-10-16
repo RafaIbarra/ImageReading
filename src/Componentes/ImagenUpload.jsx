@@ -9,7 +9,7 @@ function ImagenUpload({
   agregarImagen, // Puede ser agrega_img_frontal o agrega_img_reverso al pasarle en las props
   seleccionItem,
   clickMenu,
-  datoMenuSeleccionado, 
+  datoMenuSeleccionado,
   limpiarResultado, // Puede ser limpiar_resultado_frontal o limpiar_resultado_reverso al pasarle en las props
   tipoImagen, // "frontal" o "reverso"
 }) {
@@ -152,7 +152,7 @@ function ImagenUpload({
             <Title level={5} style={{ color: "#aaa", paddingBottom: "20px" }}>
               {isDragging
                 ? "Suelta la imagen aquí"
-                : "Click para seleccionar imagen o arrastra una imagen" + tipoImagen}
+                : "Click para seleccionar imagen o arrastra una imagen"}
             </Title>
           )}
         </div>
