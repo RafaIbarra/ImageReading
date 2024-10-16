@@ -20,7 +20,28 @@ function ImagenUpload({
   const [isDragging, setIsDragging] = useState(false);
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
+    handleImageSelection(event);
+  };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setIsDragging(false);
+
+    handleImageSelection(event);
+  };
+
+  const handleImageSelection = (event) => {
+    let file;
+    if (event) {
+      // Handle drag and drop event
+      if (event.dataTransfer) {
+        file = event.dataTransfer.files[0];
+      } else {
+        // Handle traditional file input change
+        file = event.target.files[0];
+      }
+    }
 
     if (file) {
       if (!file.type.startsWith("image/")) {
@@ -35,7 +56,6 @@ function ImagenUpload({
         agregarImagen(file, file.name);
       };
       reader.readAsDataURL(file);
-
       event.target.value = null;
     }
   };
@@ -63,27 +83,6 @@ function ImagenUpload({
   const handleContainerClick = (event) => {
     if (!event.target.closest(".image-hover")) {
       fileInputRef.current.click();
-    }
-  };
-
-  const handleDrop = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setIsDragging(false);
-
-    const file = event.dataTransfer.files[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        showErrorMessage("Solo se permiten archivos de tipo imagen");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-        agregarImagen(file, file.name);
-      };
-      reader.readAsDataURL(file);
     }
   };
 
