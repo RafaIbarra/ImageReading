@@ -1,8 +1,5 @@
-import React, { useState,useEffect } from 'react';
-
+import { useState,useEffect } from 'react';
 import { Typography,notification} from 'antd';
-import ImagenFrontal from './ImagenFrontal';
-import ImagenReverso from './ImagenReverso';
 import ResultadoFrontal from './ResultadoFrontal/ResultadoFrontal';
 import ResultadoReverso from './ResultadoReverso/ResultadoReverso';
 import './Seleccionarimgv2.css'
