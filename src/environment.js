@@ -1,7 +1,7 @@
 const environments = {
   development: {
-    //apiUrl: "http://localhost:3000/api",
-    apiUrl: "https://docs.rafaelibarra.xyz/api/",
+    apiUrl: "http://127.0.0.1:8000/api/",
+    // apiUrl: "https://docs.rafaelibarra.xyz/api/",
   },
   production: {
     apiUrl: "https://docs.rafaelibarra.xyz/api/",

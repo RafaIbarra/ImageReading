@@ -69,6 +69,7 @@ function SeleccionarImg  ({realizarrecarga
       formData.append('imagen_reverso', imgreverso); // Archivo seleccionado en ImagenReverso
   
       try {
+        
         // const response = await fetch('http://127.0.0.1:8000/api/lectura-imagen/', {
         const response = await fetch(`${apiUrl}lectura-imagen/`, {
           method: 'POST',
