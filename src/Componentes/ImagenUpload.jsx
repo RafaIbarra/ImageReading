@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Typography, notification } from "antd";
-import { WarningOutlined } from "@ant-design/icons";
 import "./costum.css";
+import { showErrorMessage } from "../utils/alert";
 
 const { Title } = Typography;
 
@@ -9,7 +9,7 @@ function ImagenUpload({
   agregarImagen, // Puede ser agrega_img_frontal o agrega_img_reverso al pasarle en las props
   seleccionItem,
   clickMenu,
-  datoMenuSeleccionado, 
+  datoMenuSeleccionado,
   limpiarResultado, // Puede ser limpiar_resultado_frontal o limpiar_resultado_reverso al pasarle en las props
   tipoImagen, // "frontal" o "reverso"
 }) {
@@ -19,21 +19,33 @@ function ImagenUpload({
   const [api, contextHolder] = notification.useNotification();
   const [isDragging, setIsDragging] = useState(false);
 
-  const mostrarmensajeerror = (placement, mensaje) => {
-    api.open({
-      message: "ERROR",
-      description: ` ${mensaje}`,
-      placement,
-      icon: <WarningOutlined style={{ color: "red" }} />,
-    });
+  const handleImageChange = (event) => {
+    handleImageSelection(event);
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
+  const handleDrop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setIsDragging(false);
+
+    handleImageSelection(event);
+  };
+
+  const handleImageSelection = (event) => {
+    let file;
+    if (event) {
+      // Handle drag and drop event
+      if (event.dataTransfer) {
+        file = event.dataTransfer.files[0];
+      } else {
+        // Handle traditional file input change
+        file = event.target.files[0];
+      }
+    }
 
     if (file) {
       if (!file.type.startsWith("image/")) {
-        mostrarmensajeerror("top", "Solo se permiten archivos de imagen");
+        showErrorMessage("Solo se permiten archivos de tipo imagen");
         event.target.value = null;
         return;
       }
@@ -44,7 +56,6 @@ function ImagenUpload({
         agregarImagen(file, file.name);
       };
       reader.readAsDataURL(file);
-
       event.target.value = null;
     }
   };
@@ -72,27 +83,6 @@ function ImagenUpload({
   const handleContainerClick = (event) => {
     if (!event.target.closest(".image-hover")) {
       fileInputRef.current.click();
-    }
-  };
-
-  const handleDrop = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setIsDragging(false);
-
-    const file = event.dataTransfer.files[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        mostrarmensajeerror("top", "Solo se permiten archivos de imagen");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-        agregarImagen(file, file.name);
-      };
-      reader.readAsDataURL(file);
     }
   };
 
@@ -152,7 +142,7 @@ function ImagenUpload({
             <Title level={5} style={{ color: "#aaa", paddingBottom: "20px" }}>
               {isDragging
                 ? "Suelta la imagen aquí"
-                : "Click para seleccionar imagen o arrastra una imagen" + tipoImagen}
+                : "Click para seleccionar imagen o arrastra una imagen"}
             </Title>
           )}
         </div>
