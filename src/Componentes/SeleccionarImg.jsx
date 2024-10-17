@@ -68,7 +68,9 @@ function SeleccionarImg  ({realizarrecarga
       try {
         
         // const response = await fetch('http://127.0.0.1:8000/api/lectura-imagen/', {
-        const response = await fetch(`${apiUrl}lectura-imagen/`, {
+        const endpoint='lectura-imagen/'
+        // const endpoint='lectura-imagen-easy/'
+        const response = await fetch(`${apiUrl}${endpoint}`, {
           method: 'POST',
           body: formData,
         });
