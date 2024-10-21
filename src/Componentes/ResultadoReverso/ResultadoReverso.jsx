@@ -78,10 +78,10 @@ return (
                 <Form.Item label="Fecha Vencimiento Documento" style={{marginBottom:20}}>
                 <Input value={vencimiento} readOnly size="small"/>
                 </Form.Item>
-                <Form.Item label="Sexo"style={{marginBottom:20}}>
+                <Form.Item label="Sexo"style={{marginBottom:10}}>
                     <Input value={sexo} readOnly size="small"/>
                 </Form.Item>
-                <Form.Item label="Opcion Extraccion"style={{marginBottom:0}}>
+                <Form.Item label="Opcion Extraccion"style={{marginBottom:5}}>
                     <Input value={opcion} readOnly size="small"/>
                 </Form.Item>
             </Form>
