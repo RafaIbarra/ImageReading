@@ -12,6 +12,7 @@ const ResultadoReverso = ({datareverso}) => {
     const [vencimiento,setVencimiento]=useState('')
     const [sexo,setSexo]=useState('')
     const [cedula,setCedula]=useState('')
+    const [opcion,setOpcion]=useState('')
     const [datosvalidos,setDatosvalidos]=useState(false)
 
   
@@ -30,6 +31,7 @@ const ResultadoReverso = ({datareverso}) => {
                 setVencimiento(datareverso['valores']['Fecha Vencimiento'])
                 setSexo(datareverso['valores'].Sexo)
                 setCedula(datareverso['valores']['Numero Cedula'])
+                setOpcion(datareverso['valores']['tipo_opcion'])
                 // setDatosvalidos(true)
                 
             }
@@ -76,8 +78,11 @@ return (
                 <Form.Item label="Fecha Vencimiento Documento" style={{marginBottom:20}}>
                 <Input value={vencimiento} readOnly size="small"/>
                 </Form.Item>
-                <Form.Item label="Sexo"style={{marginBottom:0}}>
+                <Form.Item label="Sexo"style={{marginBottom:20}}>
                     <Input value={sexo} readOnly size="small"/>
+                </Form.Item>
+                <Form.Item label="Opcion Extraccion"style={{marginBottom:0}}>
+                    <Input value={opcion} readOnly size="small"/>
                 </Form.Item>
             </Form>
         </div>

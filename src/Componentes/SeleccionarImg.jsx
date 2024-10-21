@@ -80,6 +80,7 @@ function SeleccionarImg  ({realizarrecarga
           
           SetDatafrontal(data['anverso'])
           SetDatareverso(data['reverso'])
+          console.log(data['reverso'])
           saveToStorage(data, imgfrontal, imgreverso);
           setCurrentmenu('0')
           
